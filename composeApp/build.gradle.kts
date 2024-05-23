@@ -2,7 +2,9 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
-    kotlin("plugin.serialization") version "1.9.22"
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
+    kotlin("plugin.serialization") version "1.9.23"
 }
 
 kotlin {
@@ -52,8 +54,25 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.navigation.compose)
+            implementation(libs.coil.compose.core)
+            implementation(libs.coil.compose)
+            implementation(libs.coil.mp)
+            implementation(libs.coil.network.ktor)
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.sqlite.bundled)
+            implementation("co.touchlab:stately-common:2.0.5")
+            implementation("co.touchlab:stately-concurrent-collections:2.0.6")
+            implementation("androidx.datastore:datastore-preferences-core:1.1.1")
         }
     }
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
+dependencies {
+    ksp(libs.androidx.room.compiler)
 }
 
 android {

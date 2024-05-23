@@ -8,5 +8,7 @@ data class CharacterModel(
 
 @Serializable
 data class ResultsModel(
-    val name: String
+    val name: String,
+    val image: String,
+    var isFavorite: Boolean = false
 )

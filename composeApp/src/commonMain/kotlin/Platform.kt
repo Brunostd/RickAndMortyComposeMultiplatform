@@ -1,3 +1,5 @@
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.ViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
@@ -22,3 +24,5 @@ expect inline fun <reified T : ViewModel> Module.viewModelDefinition(
     qualifier: Qualifier? = null,
     noinline definition: Definition<T>
 ): KoinDefinition<T>
+
+expect fun createDataStore(): DataStore<Preferences>
