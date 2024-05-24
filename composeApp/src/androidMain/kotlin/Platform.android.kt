@@ -55,7 +55,6 @@ actual inline fun <reified T : ViewModel> Module.viewModelDefinition(
 
 internal const val dataStoreFileName = "dice.preferences_pb"
 
-@RequiresApi(Build.VERSION_CODES.O)
 actual fun createDataStore(): DataStore<Preferences> {
     val context = MainActivity.getContext()
     if (context == null) {
